@@ -1,7 +1,7 @@
 {
   "name": "notebookgarden",
   "version": "1.0.0",
-  "license": "Apache-2",
+  "license": "Apache-2.0",
   "scripts": {
     "deploy": "NODE_ENV=production tailwindcss --postcss --minify -i css/app.css -o ../priv/static/assets/app.css && NODE_PATH=$NODE_PATH:../deps esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets",
     "tailwind-watch": "tailwindcss --input=css/app.css --output=../priv/static/assets/app.css --postcss --watch",

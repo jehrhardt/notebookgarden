@@ -34,6 +34,9 @@ RUN mix release
 
 # Create final image for production usage
 FROM alpine:3.14.2
+
+EXPOSE 4000
+
 RUN apk add --no-cache libstdc++ openssl ncurses-libs
 
 ARG MIX_ENV
@@ -55,6 +58,6 @@ RUN \
   -D "${USER}" \
   && su "${USER}"
 
-COPY --from=build --chown="${USER}":"${USER}" /app/_build/"${MIX_ENV}"/rel/notebookgarden ./
-
 USER "${USER}"
+
+COPY --from=build --chown="${USER}":"${USER}" /app/_build/"${MIX_ENV}"/rel/notebookgarden ./
