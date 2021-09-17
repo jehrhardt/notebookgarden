@@ -1,0 +1,35 @@
+<h1>Listing Notebooks</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal NotebookGardenWeb.NotebookLive.FormComponent,
+    id: @notebook.id || :new,
+    title: @page_title,
+    action: @live_action,
+    notebook: @notebook,
+    return_to: Routes.notebook_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="notebooks">
+    <%= for notebook <- @notebooks do %>
+      <tr id={"notebook-#{notebook.id}"}>
+        <td><%= notebook.title %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.notebook_show_path(@socket, :show, notebook) %></span>
+          <span><%= live_patch "Edit", to: Routes.notebook_index_path(@socket, :edit, notebook) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: notebook.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Notebook", to: Routes.notebook_index_path(@socket, :new) %></span>

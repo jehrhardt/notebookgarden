@@ -1,0 +1,22 @@
+<h1>Show Notebook</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal NotebookGardenWeb.NotebookLive.FormComponent,
+    id: @notebook.id,
+    title: @page_title,
+    action: @live_action,
+    notebook: @notebook,
+    return_to: Routes.notebook_show_path(@socket, :show, @notebook) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @notebook.title %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.notebook_show_path(@socket, :edit, @notebook), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.notebook_index_path(@socket, :index) %></span>

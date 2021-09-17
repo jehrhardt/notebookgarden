@@ -1,0 +1,22 @@
+{
+  "name": "notebookgarden",
+  "version": "1.0.0",
+  "license": "Apache-2",
+  "scripts": {
+    "deploy": "NODE_ENV=production tailwindcss --postcss --minify -i css/app.css -o ../priv/static/assets/app.css && NODE_PATH=$NODE_PATH:../deps esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets",
+    "tailwind-watch": "tailwindcss --input=css/app.css --output=../priv/static/assets/app.css --postcss --watch",
+    "esbuild-watch": "NODE_PATH=$NODE_PATH:../deps esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --sourcemap=inline --watch"
+  },
+  "dependencies": {
+    "alpinejs": "^3.2.4",
+    "topbar": "^1.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.3.3",
+    "autoprefixer": "^10.3.3",
+    "esbuild": "^0.12.28",
+    "postcss": "^8.3.6",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.2.9"
+  }
+}

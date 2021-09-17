@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .phx-modal {
+    @apply bg-white shadow sm:rounded-lg overflow-auto fixed w-9/12;
+  }
+}
