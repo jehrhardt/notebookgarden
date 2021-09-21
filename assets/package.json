@@ -8,7 +8,7 @@
     "esbuild-watch": "NODE_PATH=$NODE_PATH:../deps esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --sourcemap=inline --watch"
   },
   "dependencies": {
-    "alpinejs": "^3.3.5",
+    "alpinejs": "^3.4.0",
     "topbar": "^1.0.1"
   },
   "devDependencies": {
